@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festival Robotique Junior</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:'Orbitron',sans-serif;
+      background:#ffffff;
+      color:#0b1d2a;
+      overflow-x:hidden;
+      text-align:center;
+    }
+
+    .robot-bg{
+      position:fixed; inset:0; z-index:-2; opacity:0.07;
+      background-repeat:no-repeat;
+      background-size:180px;
+      animation:moveRobot 28s linear infinite;
+      background-image:url('https://cdn-icons-png.flaticon.com/512/4712/4712109.png');
+    }
+
+    @keyframes moveRobot{
+      0%{background-position:-200px 10%}
+      50%{background-position:110% 60%}
+      100%{background-position:-200px 90%}
+    }
+
+    .balloons{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden;}
+    .balloon{
+      position:absolute; bottom:-120px; width:40px; height:55px; border-radius:50%;
+      animation:rise 14s linear infinite;
+      opacity:.5;
+    }
+    .balloon::after{
+      content:""; position:absolute; left:50%; top:55px; width:2px; height:40px; background:#999;
+      transform:translateX(-50%);
+    }
+
+    @keyframes rise{from{transform:translateY(0)}to{transform:translateY(-120vh)}}
+
+    header{padding:40px 20px 10px}
+
+    .logo img{width:140px; max-width:60vw}
+
+    h1{
+      font-size:42px;
+      margin:10px 0;
+      background:linear-gradient(90deg,#ffd60a,#3a86ff,#8338ec,#ffd60a);
+      background-size:300% 300%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:gradientMove 5s ease infinite;
+    }
+
+    @keyframes gradientMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    .date{
+      font-size:22px;
+      margin-bottom:5px;
+      color:#3a86ff;
+    }
+
+    .location{
+      font-size:18px;
+      margin-bottom:20px;
+      color:#8338ec;
+      animation:fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(-10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    .countdown{
+      font-size:32px;
+      margin:25px auto 10px;
+      padding:20px 30px;
+      border-radius:14px;
+      display:inline-block;
+      color:white;
+      background:linear-gradient(90deg,#ffd60a,#3a86ff,#8338ec,#ffd60a);
+      background-size:300% 300%;
+      animation:gradientMove 4s ease infinite, pulse 2s infinite;
+      box-shadow:0 0 25px rgba(58,134,255,0.5);
+      text-shadow:0 0 10px rgba(255,255,255,0.4);
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.05)}
+    }
+
+    .btn{
+      margin-top:10px;
+      display:inline-block;
+      padding:15px 42px;
+      font-size:18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:bold;
+      color:white;
+      background:linear-gradient(90deg,#8338ec,#3a86ff,#ffd60a,#8338ec);
+      background-size:300% 300%;
+      animation:gradientMove 5s ease infinite;
+      transition:.3s;
+      box-shadow:0 0 20px rgba(131,56,236,0.5);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 35px rgba(58,134,255,0.8);
+    }
+
+    section{padding:50px 20px; max-width:1100px; margin:auto}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      margin-top:30px;
+    }
+
+    .card{
+      padding:25px;
+      border-radius:14px;
+      background:#f5f7fb;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .robot-icon{
+      width:60px;
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+
+    .qr{margin-top:30px}
+
+    footer{margin:40px 0 20px; font-size:14px; opacity:.7}
+
+    @media (max-width:768px){
+      h1{font-size:28px}
+      .date{font-size:18px}
+      .location{font-size:16px}
+      .countdown{font-size:22px; width:92%; display:block}
+      .btn{width:92%; display:block; margin:15px auto; font-size:16px}
+      .card{padding:18px}
+      .logo img{width:110px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="robot-bg"></div>
+
+<div class="balloons">
+  <div class="balloon" style="left:10%; background:#ffd60a"></div>
+  <div class="balloon" style="left:25%; background:#3a86ff; animation-delay:2s"></div>
+  <div class="balloon" style="left:40%; background:#8338ec; animation-delay:4s"></div>
+  <div class="balloon" style="left:60%; background:#ffd60a; animation-delay:1s"></div>
+  <div class="balloon" style="left:80%; background:#3a86ff; animation-delay:3s"></div>
+</div>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+  </div>
+  <h1>FESTIVAL DE ROBOTIQUE JUNIOR</h1>
+  <div class="date">📅 28 Juin 2026</div>
+  <div class="location">📍 Tunis, Tunisie</div>
+</header>
+
+<div class="countdown" id="countdown">Chargement...</div>
+<br>
+<a href="https://tally.so/r/pb49Kq" target="_blank" class="btn">S'inscrire</a>
+
+<section>
+  <h2>À propos de l'événement</h2>
+  <p>Une journée dédiée aux jeunes passionnés de robotique, d'innovation et de technologie.</p>
+
+  <div class="cards">
+    <div class="card">
+      <img class="robot-icon" src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+      🏆 Compétitions
+    </div>
+    <div class="card">
+      <img class="robot-icon" src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png">
+      🛠️ Ateliers
+    </div>
+    <div class="card">
+      <img class="robot-icon" src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+      🤝 Experts
+    </div>
+    <div class="card">
+      <img class="robot-icon" src="https://cdn-icons-png.flaticon.com/512/4712/4712115.png">
+      🚀 Innovation
+    </div>
+  </div>
+
+  <div class="qr">
+    <h3>Suivez-nous sur Facebook</h3>
+    <img src="qr.png" width="160">
+  </div>
+</section>
+
+<footer>
+  © 2026 Festival DE Robotique Junior
+</footer>
+
+<script>
+  const eventDate = new Date("June 28, 2026 00:00:00").getTime();
+  setInterval(()=>{
+    const now=new Date().getTime();
+    const d=eventDate-now;
+    const days=Math.floor(d/(1000*60*60*24));
+    const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    const minutes=Math.floor((d%(1000*60*60))/(1000*60));
+    const seconds=Math.floor((d%(1000*60))/1000);
+    document.getElementById('countdown').innerHTML=days+"j "+hours+"h "+minutes+"m "+seconds+"s";
+  },1000);
+</script>
+
+</body>
+</html>
